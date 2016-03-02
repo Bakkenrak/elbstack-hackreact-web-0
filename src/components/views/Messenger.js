@@ -4,6 +4,7 @@ import Profile from '../elements/Profile'
 import ListChannelsBtn from '../elements/ListChannelsBtn'
 import JoinedChannelList from '../elements/JoinedChannelList'
 import IntroText from '../elements/IntroText'
+import TeamLogo from '../elements/TeamLogo'
 import styles from './Messenger.scss'
 
 @connect(
@@ -18,6 +19,7 @@ export default class Messenger extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.nav}>
+          <TeamLogo />
           <Profile />
           <ListChannelsBtn />
           <JoinedChannelList />
