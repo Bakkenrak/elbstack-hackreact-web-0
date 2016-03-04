@@ -5,18 +5,21 @@ import ListChannelsBtn from '../elements/ListChannelsBtn'
 import JoinedChannelList from '../elements/JoinedChannelList'
 import ChannelList from '../containers/ChannelList'
 import IntroText from '../elements/IntroText'
+import Chat from '../containers/Chat'
 import TeamLogo from '../elements/TeamLogo'
 import styles from './Messenger.scss'
 
 @connect(
   state => ({
+    channels: state.channels,
     sendbird: state.sendbird
   })
 )
 export default class Messenger extends Component {
 
   state = {
-    channelListOpen: false
+    channelListOpen: false,
+    activeChannelId: null
   }
 
   onOpenChannels() {
@@ -27,6 +30,7 @@ export default class Messenger extends Component {
 
   render() {
 
+    const content = this.props.channels.activeChannelId ? <Chat id={this.props.channels.activeChannelId} /> : <IntroText />
     const channelList = this.state.channelListOpen ? <ChannelList /> : null
 
     return (
@@ -39,7 +43,7 @@ export default class Messenger extends Component {
         </div>
         <div className={styles.chat}>
           { channelList }
-          <IntroText />
+          { content }
         </div>
       </div>
     )

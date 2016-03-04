@@ -1,4 +1,4 @@
-import { SENDBIRD_LIST_CHANNELS } from '../actionTypes'
+import { SENDBIRD_LIST_CHANNELS, SENDBIRD_JOIN_CHANNELS } from '../actionTypes'
 
 export default function channels(state = {}, action) {
   switch (action.type) {
@@ -15,6 +15,13 @@ export default function channels(state = {}, action) {
           }), {})
         }
       )
+
+    case SENDBIRD_JOIN_CHANNELS:
+      return {
+        ...state,
+        activeChannelId: action.channelId
+      }
+
     default:
       return state
   }
