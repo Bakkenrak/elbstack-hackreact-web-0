@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { joinChat } from '../../redux/actions/chat'
 import ChatMessage from '../elements/ChatMessage'
+import MessageInput from '../elements/MessageInput'
 import styles from './Chat.scss'
 
 @connect(
@@ -54,9 +55,14 @@ export default class Chat extends Component {
   render() {
 
     const content = this.props.id && this.props.messages[this.props.id] ?
-      <div className={styles.messageList}>{this.renderMessages()}</div> :
-      <div>loading messages</div>
+      this.renderMessages() :
+      'loading messages'
 
-    return content
+    return (
+      <div className={styles.container}>
+        <div className={styles.messages}>{content}</div>
+        <MessageInput />
+      </div>
+    )
   }
 }

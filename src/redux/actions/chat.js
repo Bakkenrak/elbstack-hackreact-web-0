@@ -1,12 +1,20 @@
 import sendbird from 'sendbird'
-import { CHAT_CONNECTED } from '../actionTypes'
+import { CHAT_CONNECTED, EVENT_ON_MESSAGE_RECEIVED, CHAT_SEND_MESSAGE } from '../actionTypes'
 
 export function onMessageReceived(store) {
   return (data) => {
     store.dispatch({
-      type: 'SENDBIRD_MESSAGE',
+      type: EVENT_ON_MESSAGE_RECEIVED,
       payload: data
     })
+  }
+}
+
+export function sendMessageToChannel(content) {
+  sendbird.message(content)
+
+  return {
+    type: CHAT_SEND_MESSAGE
   }
 }
 

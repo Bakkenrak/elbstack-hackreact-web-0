@@ -1,0 +1,14 @@
+@import "../../theme/variables";
+
+.container {
+  padding: 1em;
+  border-top: 1px solid $text-light;
+  overflow: hidden;
+  height: 60px;
+}
+
+.input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid $base-color;
+}

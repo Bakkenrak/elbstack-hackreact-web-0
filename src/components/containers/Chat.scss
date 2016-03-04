@@ -1,5 +1,12 @@
-.messageList {
+.container {
   width: 100%;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.messages {
   padding: 1em;
+  flex-grow: 1;
+  overflow: auto;
 }
